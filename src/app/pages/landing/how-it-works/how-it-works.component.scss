@@ -1,0 +1,81 @@
+@import '../marketing-shared';
+
+.page {
+  overflow-x: hidden;
+}
+
+.steps-section {
+  padding: 5rem 1.5rem;
+}
+
+.steps {
+  max-width: 760px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.step {
+  display: flex;
+  gap: 1.75rem;
+}
+
+.step__marker {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.step__number {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: var(--orange-dim);
+  color: var(--orange);
+  border: 1px solid rgba(249, 115, 22, 0.4);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  font-size: 0.95rem;
+  flex-shrink: 0;
+}
+
+.step__line {
+  width: 2px;
+  flex: 1;
+  min-height: 2.5rem;
+  background: var(--border-strong);
+  margin: 0.5rem 0;
+  transform: scaleY(0);
+  transform-origin: top;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.2s;
+}
+
+.step.is-visible .step__line {
+  transform: scaleY(1);
+}
+
+.step.is-visible .step__number {
+  box-shadow: 0 0 0 6px var(--orange-dim);
+}
+
+.step__body {
+  padding-bottom: 2.5rem;
+
+  h3 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin: 0.6rem 0 0.6rem;
+  }
+
+  p {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    line-height: 1.65;
+    margin: 0;
+    max-width: 34rem;
+  }
+}

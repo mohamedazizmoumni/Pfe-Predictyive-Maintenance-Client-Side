@@ -1,0 +1,21 @@
+<section class="final-cta">
+  <div class="final-cta__bg" aria-hidden="true">
+    <span class="final-cta__grid"></span>
+    <span class="final-cta__glow final-cta__glow--1"></span>
+    <span class="final-cta__glow final-cta__glow--2"></span>
+    <span
+      class="final-cta__particle"
+      *ngFor="let p of particles()"
+      [style.left.%]="p.x"
+      [style.top.%]="p.y"
+      [style.animation-delay.s]="p.delay"
+      [style.animation-duration.s]="p.duration"></span>
+  </div>
+
+  <div class="final-cta__inner" appScrollReveal>
+    <span class="tag-label">Ready When You Are</span>
+    <h2>Transform your maintenance<br />strategy with AI.</h2>
+    <p>Deploy Sentinel on your first production line in weeks, not quarters.</p>
+    <a routerLink="/demo" class="btn btn--primary btn--lg">Start Intelligent Maintenance</a>
+  </div>
+</section>

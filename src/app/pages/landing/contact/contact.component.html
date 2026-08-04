@@ -1,0 +1,104 @@
+<div class="page">
+
+  <app-marketing-nav></app-marketing-nav>
+
+  <!-- HERO -->
+  <section class="page-hero" appScrollReveal>
+    <span class="badge">Contact</span>
+    <h1>Parlons de votre <span class="accent-gradient">projet</span></h1>
+    <p>
+      Une question sur nos solutions, une demande d'accès à la plateforme, ou besoin
+      d'assistance ? Notre équipe vous répond sous 24h.
+    </p>
+  </section>
+
+  <!-- CONTENT -->
+  <section class="contact-section">
+    <div class="contact-grid">
+
+      <div class="contact-channels" appScrollReveal>
+        <article class="channel-card" *ngFor="let c of channels">
+          <div class="channel-card__icon" [ngSwitch]="c.icon">
+            <svg *ngSwitchCase="'mail'" width="18" height="18" viewBox="0 0 24 24" fill="none"><rect x="3" y="5" width="18" height="14" rx="2" stroke="currentColor" stroke-width="1.6"/><path d="M4 7l8 6 8-6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <svg *ngSwitchCase="'phone'" width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M4 4h4l2 5-2.5 2a12 12 0 006.5 6.5l2-2.5 5 2v4a2 2 0 01-2 2A16 16 0 014 6a2 2 0 012-2z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+            <svg *ngSwitchCase="'pin'" width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M12 21s7-6.5 7-12a7 7 0 10-14 0c0 5.5 7 12 7 12z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><circle cx="12" cy="9" r="2.4" stroke="currentColor" stroke-width="1.6"/></svg>
+          </div>
+
+          <div>
+            <p class="channel-card__label">{{ c.label }}</p>
+            <p class="channel-card__value">{{ c.value }}</p>
+          </div>
+        </article>
+
+        <div class="office-hours">
+          <p class="channel-card__label">Heures d'ouverture</p>
+          <p>Lundi – Vendredi &middot; 9h00 – 18h00 (GMT+1)</p>
+        </div>
+      </div>
+
+      <div class="contact-form-card" [appScrollReveal]="150">
+        <ng-container *ngIf="!submitted; else successTpl">
+          <h2>Envoyez-nous un message</h2>
+
+          <form [formGroup]="form" (ngSubmit)="submit()">
+            <div class="form-grid">
+              <div class="form-field">
+                <label for="fullName">Nom complet</label>
+                <input id="fullName" type="text" formControlName="fullName" placeholder="Jean Dupont" />
+                <span class="form-error" *ngIf="form.get('fullName')?.invalid && form.get('fullName')?.touched">
+                  Le nom est requis
+                </span>
+              </div>
+
+              <div class="form-field">
+                <label for="email">Email</label>
+                <input id="email" type="email" formControlName="email" placeholder="jean@entreprise.com" />
+                <span class="form-error" *ngIf="form.get('email')?.invalid && form.get('email')?.touched">
+                  Un email valide est requis
+                </span>
+              </div>
+
+              <div class="form-field full">
+                <label for="subject">Sujet</label>
+                <input id="subject" type="text" formControlName="subject" placeholder="Comment pouvons-nous vous aider ?" />
+                <span class="form-error" *ngIf="form.get('subject')?.invalid && form.get('subject')?.touched">
+                  Le sujet est requis
+                </span>
+              </div>
+
+              <div class="form-field full">
+                <label for="message">Message</label>
+                <textarea id="message" formControlName="message" placeholder="Décrivez votre besoin..."></textarea>
+                <span class="form-error" *ngIf="form.get('message')?.invalid && form.get('message')?.touched">
+                  Le message doit contenir au moins 10 caractères
+                </span>
+              </div>
+            </div>
+
+            <span class="form-error" *ngIf="submitError">
+              Une erreur est survenue. Veuillez réessayer ou nous écrire directement à {{ channels[0].value }}.
+            </span>
+
+            <button type="submit" class="btn btn--primary btn--block" [disabled]="submitting">
+              {{ submitting ? 'Envoi en cours...' : 'Envoyer le message' }}
+            </button>
+          </form>
+        </ng-container>
+
+        <ng-template #successTpl>
+          <div class="form-success">
+            <div class="form-success__icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M4 12.5l5 5L20 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <h3>Message envoyé !</h3>
+            <p>Merci de nous avoir contactés. Notre équipe vous répondra sous 24h.</p>
+          </div>
+        </ng-template>
+      </div>
+
+    </div>
+  </section>
+
+  <app-marketing-footer></app-marketing-footer>
+
+</div>

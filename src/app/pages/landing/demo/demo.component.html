@@ -1,0 +1,119 @@
+<div class="page">
+
+  <app-marketing-nav></app-marketing-nav>
+
+  <!-- HERO -->
+  <section class="page-hero" appScrollReveal>
+    <span class="badge">Démo</span>
+    <h1>Demandez une démonstration <span class="accent-gradient">personnalisée</span></h1>
+    <p>
+      30 minutes avec un expert produit pour voir comment Sentinel s'applique à vos
+      machines et à vos équipes.
+    </p>
+  </section>
+
+  <!-- CONTENT -->
+  <section class="demo-section">
+    <div class="demo-grid">
+
+      <div class="demo-info" appScrollReveal>
+        <h2>Ce que vous obtiendrez</h2>
+
+        <ul class="highlight-list">
+          <li *ngFor="let h of highlights">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span>{{ h }}</span>
+          </li>
+        </ul>
+
+        <div class="demo-quote">
+          <p>
+            "L'implémentation a été rapide. En 3 mois, nous avons évité deux arrêts majeurs
+            de production sur notre ligne principale."
+          </p>
+          <span>Jean Dupont &middot; CTO, Manufacturing SA</span>
+        </div>
+      </div>
+
+      <div class="demo-form-card" [appScrollReveal]="150">
+        <ng-container *ngIf="!submitted; else successTpl">
+          <h2>Réservez votre créneau</h2>
+
+          <form [formGroup]="form" (ngSubmit)="submit()">
+            <div class="form-grid">
+              <div class="form-field">
+                <label for="fullName">Nom complet</label>
+                <input id="fullName" type="text" formControlName="fullName" placeholder="Jean Dupont" />
+                <span class="form-error" *ngIf="form.get('fullName')?.invalid && form.get('fullName')?.touched">
+                  Le nom est requis
+                </span>
+              </div>
+
+              <div class="form-field">
+                <label for="workEmail">Email professionnel</label>
+                <input id="workEmail" type="email" formControlName="workEmail" placeholder="jean@entreprise.com" />
+                <span class="form-error" *ngIf="form.get('workEmail')?.invalid && form.get('workEmail')?.touched">
+                  Un email professionnel valide est requis
+                </span>
+              </div>
+
+              <div class="form-field">
+                <label for="company">Entreprise</label>
+                <input id="company" type="text" formControlName="company" placeholder="Manufacturing SA" />
+                <span class="form-error" *ngIf="form.get('company')?.invalid && form.get('company')?.touched">
+                  L'entreprise est requise
+                </span>
+              </div>
+
+              <div class="form-field">
+                <label for="phone">Téléphone (optionnel)</label>
+                <input id="phone" type="tel" formControlName="phone" placeholder="+216 00 000 000" />
+              </div>
+
+              <div class="form-field full">
+                <label for="teamSize">Taille du parc machines</label>
+                <select id="teamSize" formControlName="teamSize">
+                  <option value="">— Sélectionner —</option>
+                  <option value="1-10">1 à 10 machines</option>
+                  <option value="11-50">11 à 50 machines</option>
+                  <option value="51-200">51 à 200 machines</option>
+                  <option value="200+">Plus de 200 machines</option>
+                </select>
+              </div>
+
+              <div class="form-field full">
+                <label for="message">Message (optionnel)</label>
+                <textarea id="message" formControlName="message" placeholder="Parlez-nous de votre contexte industriel..."></textarea>
+              </div>
+            </div>
+
+            <span class="form-error" *ngIf="submitError">
+              Une erreur est survenue. Veuillez réessayer ou nous écrire directement à contact&#64;sentinel-maintenance.io.
+            </span>
+
+            <button type="submit" class="btn btn--primary btn--block" [disabled]="submitting">
+              {{ submitting ? 'Envoi en cours...' : 'Demander une démo' }}
+            </button>
+          </form>
+        </ng-container>
+
+        <ng-template #successTpl>
+          <div class="form-success">
+            <div class="form-success__icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M4 12.5l5 5L20 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <h3>Demande envoyée !</h3>
+            <p>
+              Merci ! Un expert Sentinel vous recontactera sous 24h pour organiser votre
+              démonstration.
+            </p>
+          </div>
+        </ng-template>
+      </div>
+
+    </div>
+  </section>
+
+  <app-marketing-footer></app-marketing-footer>
+
+</div>

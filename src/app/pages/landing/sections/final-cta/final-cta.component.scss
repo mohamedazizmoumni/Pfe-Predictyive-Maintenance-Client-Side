@@ -1,0 +1,123 @@
+@import '../../marketing-shared';
+
+.final-cta {
+  position: relative;
+  margin: 5rem 1.5rem 6rem;
+  padding: 6.5rem 2rem;
+  border-radius: 32px;
+  overflow: hidden;
+  text-align: center;
+  background: linear-gradient(160deg, #060a12, #0a1420 55%, #050709);
+  border: 1px solid var(--border);
+}
+
+.final-cta__bg {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.final-cta__grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(125, 196, 252, 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(125, 196, 252, 0.06) 1px, transparent 1px);
+  background-size: 40px 40px;
+  mask-image: radial-gradient(ellipse 70% 70% at 50% 50%, #000 40%, transparent 95%);
+}
+
+.final-cta__glow {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  animation: cta-drift 14s ease-in-out infinite;
+}
+
+.final-cta__glow--1 {
+  top: -20%;
+  left: 10%;
+  width: 460px;
+  height: 460px;
+  background: radial-gradient(circle, rgba(59, 130, 246, 0.3), transparent 70%);
+}
+
+.final-cta__glow--2 {
+  bottom: -25%;
+  right: 5%;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(34, 211, 238, 0.22), transparent 70%);
+  animation-delay: -6s;
+  animation-duration: 17s;
+}
+
+@keyframes cta-drift {
+  0%, 100% { transform: translate3d(0, 0, 0) scale(1); }
+  50% { transform: translate3d(3%, -4%, 0) scale(1.08); }
+}
+
+.final-cta__particle {
+  position: absolute;
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: var(--cyan-light);
+  opacity: 0.5;
+  box-shadow: 0 0 6px rgba(34, 211, 238, 0.8);
+  animation-name: cta-particle;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+}
+
+@keyframes cta-particle {
+  0%, 100% { transform: translateY(0); opacity: 0.15; }
+  50% { transform: translateY(-22px); opacity: 0.65; }
+}
+
+.final-cta__inner {
+  position: relative;
+  max-width: 640px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.final-cta__inner .tag-label {
+  color: var(--cyan);
+  margin-bottom: 1.25rem;
+}
+
+.final-cta__inner h2 {
+  font-size: 2.6rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+  margin: 0 0 1.25rem;
+}
+
+.final-cta__inner p {
+  color: var(--text-secondary);
+  font-size: 1.05rem;
+  line-height: 1.6;
+  margin: 0 0 2.25rem;
+}
+
+@media (max-width: 640px) {
+  .final-cta {
+    padding: 4.5rem 1.5rem;
+    margin: 3.5rem 1rem 4rem;
+  }
+
+  .final-cta__inner h2 {
+    font-size: 2rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .final-cta__glow,
+  .final-cta__particle {
+    animation: none !important;
+  }
+}

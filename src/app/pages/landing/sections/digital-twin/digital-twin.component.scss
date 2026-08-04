@@ -1,0 +1,259 @@
+@import '../../marketing-shared';
+
+.twin {
+  padding: 6rem 1.5rem;
+  max-width: 1240px;
+  margin: 0 auto;
+}
+
+.twin__grid {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 3.5rem;
+  align-items: center;
+}
+
+// ── Visual ────────────────────────────────────────────────────────
+
+.twin__visual {
+  position: relative;
+  max-width: 480px;
+}
+
+.twin__frame {
+  position: relative;
+  aspect-ratio: 1 / 0.95;
+  border-radius: 24px;
+  overflow: hidden;
+}
+
+.twin__scene {
+  position: absolute;
+  inset: 0;
+}
+
+.twin__hint {
+  position: absolute;
+  bottom: 0.9rem;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 0.3rem 0.7rem;
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.4);
+  border: 1px solid var(--border);
+  pointer-events: none;
+}
+
+// ── Hotspots ──────────────────────────────────────────────────────
+
+.hotspot {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  color: var(--text);
+  font-family: inherit;
+  text-align: left;
+}
+
+.hotspot__dot {
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  background: var(--cyan);
+  box-shadow: 0 0 0 4px var(--cyan-dim), 0 0 12px rgba(34, 211, 238, 0.8);
+  flex-shrink: 0;
+  animation: pulse-glow 2.4s ease-in-out infinite;
+}
+
+.hotspot--warning .hotspot__dot {
+  background: var(--warning);
+  box-shadow: 0 0 0 4px var(--warning-dim), 0 0 12px rgba(249, 115, 22, 0.8);
+}
+
+.hotspot__card {
+  display: flex;
+  flex-direction: column;
+  min-width: 9rem;
+  max-width: 13rem;
+  padding: 0.55rem 0.75rem;
+  border-radius: 10px;
+  background: linear-gradient(180deg, var(--surface-strong), var(--surface));
+  border: 1px solid var(--border-strong);
+  backdrop-filter: blur(14px);
+
+  strong {
+    font-size: 0.8rem;
+    font-weight: 700;
+  }
+
+  span {
+    display: block;
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    font-size: 0.76rem;
+    color: var(--text-secondary);
+    line-height: 1.5;
+    transition: max-height 0.3s ease, opacity 0.25s ease, margin-top 0.3s ease;
+  }
+}
+
+.hotspot:hover .hotspot__card span,
+.hotspot:focus-visible .hotspot__card span {
+  max-height: 6rem;
+  opacity: 1;
+  margin-top: 0.35rem;
+}
+
+.hotspot--top {
+  top: -6%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.hotspot--left {
+  top: 46%;
+  left: -14%;
+}
+
+.hotspot--bottom-right {
+  bottom: 4%;
+  right: -12%;
+}
+
+// ── Panel ─────────────────────────────────────────────────────────
+
+.twin__lede {
+  color: var(--text-secondary);
+  font-size: 1rem;
+  line-height: 1.7;
+  margin: 0 0 2.25rem;
+}
+
+.health-ring {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 2.25rem;
+}
+
+.health-ring__track {
+  fill: none;
+  stroke: var(--surface-strong);
+  stroke-width: 8;
+}
+
+.health-ring__value {
+  fill: none;
+  stroke: var(--cyan);
+  stroke-width: 8;
+  stroke-linecap: round;
+  stroke-dasharray: 326.7;
+  stroke-dashoffset: 326.7;
+  transform: rotate(-90deg);
+  transform-origin: 50% 50%;
+  transition: stroke-dashoffset 1.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.health-ring.is-visible .health-ring__value {
+  stroke-dashoffset: 19.6;
+}
+
+.health-ring__label {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.15rem;
+
+  strong {
+    font-size: 1.35rem;
+    font-weight: 600;
+    color: var(--text);
+    line-height: 1;
+  }
+
+  // Overrides the shared .tag-label sizing: at the default size "OVERALL
+  // HEALTH" is wider than the ring's inner chord and visually collides with
+  // the stroke, so it needs to run smaller/tighter here specifically.
+  .tag-label {
+    font-size: 0.52rem;
+    letter-spacing: 0.06em;
+    line-height: 1.2;
+    white-space: nowrap;
+  }
+}
+
+.prediction-callout {
+  display: flex;
+  gap: 0.85rem;
+  padding: 1.1rem 1.25rem;
+  border-radius: 14px;
+  background: var(--warning-dim);
+  border: 1px solid rgba(249, 115, 22, 0.3);
+
+  strong {
+    display: block;
+    font-size: 0.9rem;
+    margin-bottom: 0.25rem;
+    color: var(--warning-light);
+  }
+
+  p {
+    margin: 0;
+    font-size: 0.82rem;
+    color: var(--text-secondary);
+    line-height: 1.5;
+  }
+}
+
+.status-flag {
+  width: 8px;
+  height: 8px;
+  margin-top: 0.35rem;
+  border-radius: 50%;
+  background: var(--warning);
+  box-shadow: 0 0 8px rgba(249, 115, 22, 0.8);
+  flex-shrink: 0;
+}
+
+// ── Responsive ────────────────────────────────────────────────────
+
+@media (max-width: 960px) {
+  .twin__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .twin__visual {
+    max-width: 420px;
+    margin: 0 auto 1rem;
+  }
+}
+
+@media (max-width: 560px) {
+  .hotspot--left {
+    left: -4%;
+  }
+
+  .hotspot--bottom-right {
+    right: -4%;
+  }
+
+  .hotspot__card {
+    max-width: 10rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hotspot__dot {
+    animation: none !important;
+  }
+}

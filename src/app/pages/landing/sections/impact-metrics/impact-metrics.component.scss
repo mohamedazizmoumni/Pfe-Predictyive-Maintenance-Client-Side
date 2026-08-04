@@ -1,0 +1,43 @@
+@import '../../marketing-shared';
+
+.impact {
+  padding: 6rem 1.5rem;
+  max-width: 1240px;
+  margin: 0 auto;
+}
+
+.impact__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+.impact-tile {
+  padding: 2.75rem 1.5rem;
+  border-radius: 22px;
+  text-align: center;
+  background: linear-gradient(180deg, var(--surface-strong), var(--surface));
+  border: 1px solid var(--border);
+}
+
+.impact-tile__value {
+  display: block;
+  font-size: 3.4rem;
+  font-weight: 600;
+  line-height: 1;
+  margin-bottom: 0.85rem;
+}
+
+@media (max-width: 860px) {
+  .impact__grid {
+    grid-template-columns: 1fr;
+    max-width: 22rem;
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 640px) {
+  .impact-tile__value {
+    font-size: 2.8rem;
+  }
+}

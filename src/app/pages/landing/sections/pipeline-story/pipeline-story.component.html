@@ -1,0 +1,32 @@
+<section id="platform" class="pipeline">
+  <div class="section-head" appScrollReveal>
+    <span class="eyebrow">The Platform</span>
+    <h2>Your machines are talking.<br />AI listens.</h2>
+    <p>
+      Every stage of the maintenance decision, automated — from raw sensor signal to a
+      dispatched work order.
+    </p>
+  </div>
+
+  <div class="pipeline__track">
+    <svg class="pipeline__svg" viewBox="0 0 1000 100" preserveAspectRatio="none" aria-hidden="true">
+      <path class="pipeline__path-bg" d="M100,50 L900,50" />
+      <path class="pipeline__path" d="M100,50 L900,50" />
+      <circle class="pipeline__particle" r="6" />
+    </svg>
+
+    <div class="pipeline-nodes">
+      <div class="pipeline-node" *ngFor="let node of nodes; let i = index" [appScrollReveal]="i * 100">
+        <span class="pipeline-node__icon" [ngSwitch]="node.icon">
+          <svg *ngSwitchCase="'machine'" width="20" height="20" viewBox="0 0 24 24" fill="none"><rect x="4" y="4" width="16" height="16" rx="3" stroke="currentColor" stroke-width="1.6"/><circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="1.6"/></svg>
+          <svg *ngSwitchCase="'sensor'" width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M3 12h4l2-7 4 14 2-7h6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <svg *ngSwitchCase="'brain'" width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M9 4a3 3 0 00-3 3v1a3 3 0 000 6v1a3 3 0 003 3M15 4a3 3 0 013 3v1a3 3 0 010 6v1a3 3 0 01-3 3M9 4v16M15 4v16" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+          <svg *ngSwitchCase="'target'" width="20" height="20" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="8" stroke="currentColor" stroke-width="1.6"/><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.6"/><circle cx="12" cy="12" r="1" fill="currentColor"/></svg>
+          <svg *ngSwitchCase="'wrench'" width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M14.7 6.3a4 4 0 00-5.4 5.4L3 18l3 3 6.3-6.3a4 4 0 005.4-5.4l-2.8 2.8-2-2 2.8-2.8z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/></svg>
+        </span>
+        <h3>{{ node.label }}</h3>
+        <p>{{ node.description }}</p>
+      </div>
+    </div>
+  </div>
+</section>

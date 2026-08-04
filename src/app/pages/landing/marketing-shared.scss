@@ -1,0 +1,482 @@
+// Shared design tokens + primitives for the public marketing site
+// (landing, features, how-it-works, demo, contact + nav/footer).
+// Import with `@import '../marketing-shared';` (adjust relative path per folder depth).
+
+:host {
+  // ── Surface ─────────────────────────────────────────────────────
+  --bg: #05070a;
+  --bg-soft: #090c11;
+  --card: #0d1117;
+  --card-alt: #111621;
+  --surface: rgba(255, 255, 255, 0.03);
+  --surface-strong: rgba(255, 255, 255, 0.06);
+  --border: rgba(255, 255, 255, 0.08);
+  --border-strong: rgba(255, 255, 255, 0.16);
+
+  // ── Text ────────────────────────────────────────────────────────
+  --text: #f2f5f8;
+  --text-secondary: #a4b0bf;
+  --text-muted: #647085;
+
+  // ── Accent: electric blue / cyan (primary, industrial-AI identity) ─
+  --blue: #3b82f6;
+  --blue-light: #7dc4fc;
+  --blue-dim: rgba(59, 130, 246, 0.14);
+  --cyan: #22d3ee;
+  --cyan-light: #a5f3fc;
+  --cyan-dim: rgba(34, 211, 238, 0.14);
+
+  // ── Warning accent: orange, used ONLY for alerts / anomalies ──────
+  --warning: #f97316;
+  --warning-light: #fdba74;
+  --warning-dim: rgba(249, 115, 22, 0.14);
+
+  // ── Status ──────────────────────────────────────────────────────
+  --success: #34d399;
+  --success-dim: rgba(52, 211, 153, 0.14);
+
+  // Back-compat aliases: legacy .scss in features/how-it-works/contact still
+  // reference --orange directly for small hover accents; keep pointing at
+  // the demoted warning token rather than duplicating a color definition.
+  --orange: var(--warning);
+  --orange-light: var(--warning-light);
+  --orange-dim: var(--warning-dim);
+
+  display: block;
+  font-family: 'Inter Variable', 'Inter', system-ui, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.mono {
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+}
+
+.accent {
+  color: var(--cyan);
+}
+
+.accent-gradient {
+  background: linear-gradient(135deg, var(--blue-light), var(--cyan));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+// ── Glass / glow primitives ──────────────────────────────────────────
+// Reused by nav, footer, and every new section component for the
+// carbon-glass + glowing-border look.
+
+.glass-panel {
+  background: linear-gradient(180deg, var(--surface-strong), var(--surface));
+  border: 1px solid var(--border);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+
+.glow-border {
+  position: relative;
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 1px;
+    background: linear-gradient(135deg, rgba(59, 130, 246, 0.5), rgba(34, 211, 238, 0.15), transparent 60%);
+    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+  }
+}
+
+// Small pulsing status indicator (live/healthy state), reused across the
+// hero telemetry chips, the AI dashboard's LIVE badge, etc.
+.status-dot {
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--success);
+  box-shadow: 0 0 8px rgba(52, 211, 153, 0.8);
+  flex-shrink: 0;
+  animation: pulse-glow 2.2s ease-in-out infinite;
+}
+
+// Small uppercase mono label used for technical metadata (section eyebrows,
+// telemetry chip labels, HUD-style captions).
+.tag-label {
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+// ── Buttons ───────────────────────────────────────────────────────
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.85rem 1.6rem;
+  border-radius: 10px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  cursor: pointer;
+  border: 1px solid transparent;
+  transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease, border-color 0.15s ease;
+  white-space: nowrap;
+
+  &:hover {
+    transform: translateY(-1px);
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none;
+  }
+}
+
+.btn--primary {
+  background: linear-gradient(135deg, var(--blue), var(--cyan));
+  color: #051018;
+
+  &:hover:not(:disabled) {
+    box-shadow: 0 10px 30px rgba(34, 211, 238, 0.3);
+  }
+}
+
+.btn--ghost {
+  background: rgba(255, 255, 255, 0.04);
+  border-color: var(--border-strong);
+  color: var(--text);
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(125, 196, 252, 0.4);
+  }
+}
+
+.btn--dark {
+  background: #05070a;
+  color: #fff;
+  border-color: rgba(255, 255, 255, 0.1);
+
+  &:hover {
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.35);
+  }
+}
+
+.btn--outline-dark {
+  background: transparent;
+  border-color: rgba(5, 7, 10, 0.35);
+  color: #051018;
+
+  &:hover {
+    background: rgba(5, 7, 10, 0.08);
+  }
+}
+
+.btn--sm {
+  padding: 0.6rem 1.2rem;
+  font-size: 0.85rem;
+}
+
+.btn--lg {
+  padding: 1.05rem 2.2rem;
+  font-size: 1.02rem;
+}
+
+.btn--block {
+  width: 100%;
+}
+
+// ── Page hero header (used by inner pages) ─────────────────────────
+
+.page-hero {
+  padding: 4.5rem 1.5rem 3.5rem;
+  text-align: center;
+  border-bottom: 1px solid var(--border);
+}
+
+.page-hero h1 {
+  font-size: 2.6rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  margin: 0 0 1rem;
+}
+
+.page-hero p {
+  max-width: 40rem;
+  margin: 0 auto;
+  color: var(--text-secondary);
+  font-size: 1.05rem;
+  line-height: 1.6;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.4rem 0.9rem;
+  border-radius: 999px;
+  border: 1px solid rgba(34, 211, 238, 0.35);
+  background: var(--cyan-dim);
+  color: var(--cyan-light);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin-bottom: 1.5rem;
+}
+
+.badge--warning {
+  border-color: rgba(249, 115, 22, 0.4);
+  background: var(--warning-dim);
+  color: var(--warning-light);
+}
+
+// ── Section head ──────────────────────────────────────────────────
+
+.section-head {
+  max-width: 640px;
+  margin: 0 auto 3.5rem;
+  text-align: center;
+}
+
+.section-head--left {
+  text-align: left;
+  margin: 0 0 3rem;
+}
+
+.eyebrow {
+  display: block;
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--cyan);
+  margin-bottom: 0.75rem;
+}
+
+.section-head h2 {
+  font-size: 2.1rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  margin: 0 0 1rem;
+}
+
+.section-head p {
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin: 0;
+}
+
+.underline {
+  display: block;
+  width: 48px;
+  height: 3px;
+  border-radius: 2px;
+  background: linear-gradient(90deg, var(--blue), var(--cyan));
+  margin-top: 0.75rem;
+}
+
+// ── CTA banner (reused verbatim on inner pages) ─────────────────────
+
+.cta {
+  margin: 5rem 1.5rem;
+  padding: 4rem 2rem;
+  border-radius: 28px;
+  background: linear-gradient(135deg, var(--blue), var(--cyan));
+  text-align: center;
+  color: #051018;
+
+  h2 {
+    font-size: 2rem;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    margin: 0 0 1.75rem;
+  }
+}
+
+.cta__actions {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-bottom: 1.25rem;
+}
+
+.cta__note {
+  margin: 0;
+  font-size: 0.85rem;
+  opacity: 0.75;
+}
+
+// ── Forms (demo / contact) ──────────────────────────────────────────
+
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.25rem;
+}
+
+.form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+
+  &.full {
+    grid-column: 1 / -1;
+  }
+
+  label {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+  }
+
+  input,
+  textarea,
+  select {
+    background: var(--card);
+    border: 1px solid var(--border-strong);
+    border-radius: 10px;
+    padding: 0.75rem 0.9rem;
+    color: var(--text);
+    font-family: inherit;
+    font-size: 0.92rem;
+    outline: none;
+    transition: border-color 0.15s ease;
+
+    &:focus {
+      border-color: var(--cyan);
+    }
+
+    &::placeholder {
+      color: var(--text-muted);
+    }
+  }
+
+  textarea {
+    resize: vertical;
+    min-height: 100px;
+  }
+}
+
+.form-error {
+  font-size: 0.78rem;
+  color: #f87171;
+}
+
+.form-success {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 0.75rem;
+  padding: 2.5rem 1.5rem;
+
+  .form-success__icon {
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    background: var(--cyan-dim);
+    color: var(--cyan);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: success-pop 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+  }
+
+  h3 {
+    margin: 0;
+    font-size: 1.3rem;
+    font-weight: 800;
+  }
+
+  p {
+    margin: 0;
+    color: var(--text-secondary);
+    max-width: 26rem;
+  }
+}
+
+// ── Scroll-reveal animation primitives ─────────────────────────────
+// Applied via [appScrollReveal]; see scroll-reveal.directive.ts.
+
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+.reveal--scale {
+  transform: translateY(16px) scale(0.96);
+}
+
+.reveal--scale.is-visible {
+  transform: none;
+}
+
+@keyframes float-orb {
+  0%, 100% { transform: translate3d(0, 0, 0) scale(1); }
+  50% { transform: translate3d(0, -18px, 0) scale(1.04); }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { opacity: 0.55; }
+  50% { opacity: 1; }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+@keyframes success-pop {
+  0% { transform: scale(0); opacity: 0; }
+  60% { transform: scale(1.15); opacity: 1; }
+  100% { transform: scale(1); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+
+  * {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+  }
+}
+
+// ── Responsive ────────────────────────────────────────────────────
+
+@media (max-width: 640px) {
+  .page-hero h1 {
+    font-size: 2rem;
+  }
+
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+}

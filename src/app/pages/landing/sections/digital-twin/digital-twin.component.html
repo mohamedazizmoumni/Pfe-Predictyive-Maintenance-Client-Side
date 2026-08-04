@@ -1,0 +1,56 @@
+<section id="digital-twin" class="twin">
+  <div class="section-head section-head--left" appScrollReveal>
+    <span class="eyebrow">Digital Twin</span>
+    <h2>Inspect the exact asset<br />the AI is watching.</h2>
+    <span class="underline"></span>
+  </div>
+
+  <div class="twin__grid">
+    <div class="twin__visual" appScrollReveal>
+      <div class="twin__frame glass-panel">
+        <app-industrial-scene mode="twin" class="twin__scene"></app-industrial-scene>
+      </div>
+
+      <button
+        type="button"
+        [class]="'hotspot hotspot--' + h.position"
+        [class.hotspot--warning]="h.status === 'warning'"
+        *ngFor="let h of hotspots">
+        <span class="hotspot__dot"></span>
+        <span class="hotspot__card">
+          <strong>{{ h.label }}</strong>
+          <span>{{ h.detail }}</span>
+        </span>
+      </button>
+
+      <span class="twin__hint tag-label">Drag to rotate</span>
+    </div>
+
+    <div class="twin__panel" appScrollReveal="120">
+      <p class="twin__lede">
+        Every monitored asset gets a living twin — the same geometry, the same sensor
+        placements, updated continuously from live telemetry so component-level condition
+        is never a guess.
+      </p>
+
+      <div class="health-ring" appScrollReveal="200">
+        <svg viewBox="0 0 120 120" width="120" height="120" aria-hidden="true">
+          <circle class="health-ring__track" cx="60" cy="60" r="52" />
+          <circle class="health-ring__value" cx="60" cy="60" r="52" />
+        </svg>
+        <div class="health-ring__label">
+          <strong class="mono">94%</strong>
+          <span class="tag-label">Overall Health</span>
+        </div>
+      </div>
+
+      <div class="prediction-callout">
+        <span class="status-flag"></span>
+        <div>
+          <strong>Bearing housing — predicted failure</strong>
+          <p>18 days to failure at current wear rate · 87% model confidence</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,135 @@
+@import '../../marketing-shared';
+
+.capabilities {
+  padding: 6rem 1.5rem;
+  max-width: 1240px;
+  margin: 0 auto;
+}
+
+.capabilities__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  // Room for cards to lift/tilt without clipping against neighbors.
+  padding: 0.5rem;
+}
+
+.cap-card {
+  --tilt-x: 50%;
+  --tilt-y: 50%;
+
+  position: relative;
+  border-radius: 20px;
+  padding: 2rem;
+  background: linear-gradient(180deg, var(--surface-strong), var(--surface));
+  border: 1px solid var(--border);
+  overflow: hidden;
+  cursor: default;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease;
+  transform-style: preserve-3d;
+  outline: none;
+
+  &:hover,
+  &:focus-visible {
+    border-color: rgba(34, 211, 238, 0.35);
+    box-shadow: 0 30px 60px -24px rgba(0, 0, 0, 0.65);
+  }
+}
+
+.cap-card__glow {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  background: radial-gradient(320px circle at var(--tilt-x) var(--tilt-y), rgba(34, 211, 238, 0.16), transparent 65%);
+  pointer-events: none;
+}
+
+.cap-card:hover .cap-card__glow,
+.cap-card:focus-visible .cap-card__glow {
+  opacity: 1;
+}
+
+.cap-card__icon {
+  position: relative;
+  width: 46px;
+  height: 46px;
+  border-radius: 12px;
+  background: var(--cyan-dim);
+  color: var(--cyan);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.4rem;
+}
+
+.cap-card h3 {
+  position: relative;
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin: 0 0 0.6rem;
+}
+
+.cap-card__desc {
+  position: relative;
+  font-size: 0.88rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin: 0;
+}
+
+.cap-card__detail {
+  position: relative;
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  font-size: 0.84rem;
+  line-height: 1.6;
+  color: var(--text-secondary);
+  margin: 0;
+  transition: max-height 0.35s ease, opacity 0.3s ease, margin-top 0.35s ease;
+}
+
+.cap-card:hover .cap-card__detail,
+.cap-card:focus-visible .cap-card__detail {
+  max-height: 10rem;
+  opacity: 1;
+  margin-top: 0.75rem;
+}
+
+.cap-card__metric {
+  position: relative;
+  display: inline-block;
+  margin-top: 1.25rem;
+  padding: 0.3rem 0.65rem;
+  border-radius: 999px;
+  font-size: 0.7rem;
+  letter-spacing: 0.04em;
+  color: var(--cyan-light);
+  background: var(--cyan-dim);
+  border: 1px solid rgba(34, 211, 238, 0.25);
+}
+
+// ── Responsive ────────────────────────────────────────────────────
+
+@media (max-width: 960px) {
+  .capabilities__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .capabilities__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .cap-card {
+    padding: 1.6rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cap-card {
+    transform: none !important;
+  }
+}

@@ -1,0 +1,65 @@
+<footer id="footer" class="footer">
+  <span class="footer__grid" aria-hidden="true"></span>
+
+  <div class="footer__top">
+    <div class="footer__brand">
+      <a routerLink="/" class="nav__brand">
+        <svg class="nav__brand-mark" width="24" height="24" viewBox="0 0 26 26" fill="none" aria-hidden="true">
+          <path d="M13 1.5 L23.5 7.25 V18.75 L13 24.5 L2.5 18.75 V7.25 Z" stroke="url(#footerBrandGrad)" stroke-width="1.4" stroke-linejoin="round"/>
+          <circle cx="13" cy="13" r="3" fill="url(#footerBrandGrad)"/>
+          <defs>
+            <linearGradient id="footerBrandGrad" x1="2.5" y1="1.5" x2="23.5" y2="24.5" gradientUnits="userSpaceOnUse">
+              <stop offset="0" style="stop-color:var(--blue)" />
+              <stop offset="1" style="stop-color:var(--cyan)" />
+            </linearGradient>
+          </defs>
+        </svg>
+        Sentin<span class="accent">el</span>
+      </a>
+      <p>
+        The AI decision layer for industrial reliability. Real-time monitoring, digital twins,
+        and failure prediction for the machines your operations depend on.
+      </p>
+
+      <div class="footer__socials">
+        <a href="https://facebook.com" target="_blank" rel="noopener" aria-label="Facebook">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M22 12a10 10 0 10-11.6 9.9v-7H7.9V12h2.5V9.8c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.4h-1.3c-1.2 0-1.6.8-1.6 1.6V12h2.8l-.4 2.9h-2.4v7A10 10 0 0022 12z"/></svg>
+        </a>
+        <a href="https://twitter.com" target="_blank" rel="noopener" aria-label="Twitter">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18.9 3H22l-7.6 8.7L23 21h-7l-5.5-6.6L4.1 21H1l8.1-9.3L1 3h7.2l5 5.9L18.9 3Zm-1.2 16h1.7L7.4 5H5.6l12.1 14Z"/></svg>
+        </a>
+        <a href="https://linkedin.com" target="_blank" rel="noopener" aria-label="LinkedIn">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20.5 2h-17A1.5 1.5 0 002 3.5v17A1.5 1.5 0 003.5 22h17a1.5 1.5 0 001.5-1.5v-17A1.5 1.5 0 0020.5 2ZM8.3 18.5H5.6V9.8h2.7v8.7ZM7 8.6a1.6 1.6 0 110-3.1 1.6 1.6 0 010 3.1Zm11.5 9.9h-2.7v-4.5c0-1.1 0-2.5-1.5-2.5s-1.7 1.2-1.7 2.4v4.6h-2.7V9.8h2.6v1.2h.1c.4-.7 1.3-1.5 2.7-1.5 2.9 0 3.4 1.9 3.4 4.3v4.7Z"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <div class="footer__col">
+      <h4 class="tag-label">Platform</h4>
+      <a routerLink="/" fragment="platform">Platform Overview</a>
+      <a routerLink="/" fragment="digital-twin">Digital Twin</a>
+      <a routerLink="/" fragment="ai-engine">AI Engine</a>
+      <a routerLink="/" fragment="solutions">Solutions</a>
+    </div>
+
+    <div class="footer__col">
+      <h4 class="tag-label">Company</h4>
+      <a routerLink="/features">Features</a>
+      <a routerLink="/how-it-works">How It Works</a>
+      <a routerLink="/demo">Request Demo</a>
+      <a routerLink="/contact">Contact</a>
+    </div>
+
+    <div class="footer__col">
+      <h4 class="tag-label">Legal</h4>
+      <a routerLink="/contact">Privacy Policy</a>
+      <a routerLink="/contact">Terms of Service</a>
+      <a routerLink="/contact">Security</a>
+    </div>
+  </div>
+
+  <div class="footer__bottom">
+    <span>&copy; {{ currentYear }} Sentinel Inc. All rights reserved.</span>
+    <span class="status"><i></i> All systems operational</span>
+  </div>
+</footer>

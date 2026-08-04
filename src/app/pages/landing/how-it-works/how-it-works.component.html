@@ -1,0 +1,46 @@
+<div class="page">
+
+  <app-marketing-nav></app-marketing-nav>
+
+  <!-- HERO -->
+  <section class="page-hero" appScrollReveal>
+    <span class="badge">Processus</span>
+    <h1>Comment fonctionne <span class="accent-gradient">Sentinel</span></h1>
+    <p>
+      De la donnée capteur brute à la décision de maintenance, quatre étapes suffisent pour
+      transformer votre approche opérationnelle.
+    </p>
+  </section>
+
+  <!-- STEPS -->
+  <section class="steps-section">
+    <div class="steps">
+      <article class="step" *ngFor="let s of steps; let last = last; let i = index" [appScrollReveal]="i * 130">
+        <div class="step__marker">
+          <span class="step__number">{{ s.number }}</span>
+          <span class="step__line" *ngIf="!last"></span>
+        </div>
+
+        <div class="step__body">
+          <h3>{{ s.title }}</h3>
+          <p>{{ s.description }}</p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta" appScrollReveal>
+    <h2>Voyez Sentinel fonctionner sur vos propres données</h2>
+
+    <div class="cta__actions">
+      <a routerLink="/demo" class="btn btn--dark">Demander une démo</a>
+      <a routerLink="/features" class="btn btn--outline-dark">Explorer les fonctionnalités</a>
+    </div>
+
+    <p class="cta__note">Réponse sous 24h · Accompagnement personnalisé par nos équipes</p>
+  </section>
+
+  <app-marketing-footer></app-marketing-footer>
+
+</div>

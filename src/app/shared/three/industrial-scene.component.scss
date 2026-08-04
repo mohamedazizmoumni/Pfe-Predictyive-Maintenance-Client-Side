@@ -1,0 +1,84 @@
+:host {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.scene {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-height: 320px;
+}
+
+.scene__poster {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.scene__poster-ring {
+  position: absolute;
+  border-radius: 50%;
+  border: 1px solid rgba(125, 196, 252, 0.18);
+}
+
+.scene__poster-ring--1 {
+  width: 62%;
+  height: 62%;
+  animation: poster-spin 40s linear infinite;
+}
+
+.scene__poster-ring--2 {
+  width: 78%;
+  height: 78%;
+  border-color: rgba(34, 211, 238, 0.12);
+  animation: poster-spin 60s linear infinite reverse;
+}
+
+.scene__poster-core {
+  width: 8%;
+  height: 8%;
+  min-width: 18px;
+  min-height: 18px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(34, 211, 238, 0.85), rgba(34, 211, 238, 0));
+  filter: blur(1px);
+  animation: pulse-glow 3s ease-in-out infinite;
+}
+
+@keyframes poster-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.scene__canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 1.1s ease;
+  touch-action: none;
+}
+
+.scene__canvas--ready {
+  opacity: 1;
+}
+
+.scene--twin .scene__canvas {
+  cursor: grab;
+}
+
+.scene--twin .scene__canvas:active {
+  cursor: grabbing;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .scene__poster-ring,
+  .scene__poster-core {
+    animation: none !important;
+  }
+}

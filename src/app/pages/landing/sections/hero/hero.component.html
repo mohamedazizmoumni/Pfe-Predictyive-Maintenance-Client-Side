@@ -1,0 +1,71 @@
+<section id="top" class="hero">
+  <div class="hero__backdrop" aria-hidden="true">
+    <span class="hero__grid"></span>
+    <span class="hero__glow hero__glow--1"></span>
+    <span class="hero__glow hero__glow--2"></span>
+  </div>
+
+  <div class="hero__inner">
+    <div class="hero__copy">
+      <span class="badge hero__badge">
+        <svg width="12" height="12" viewBox="0 0 16 16" fill="none"><path d="M8 1l1.9 4.6L14.5 6l-3.5 3.2.9 4.8L8 11.6 3.6 14l.9-4.8L1 6l4.6-.4L8 1z" fill="currentColor"/></svg>
+        Real-Time Industrial AI
+      </span>
+
+      <h1 class="hero__title">
+        <span class="line">Industrial Intelligence,</span>
+        <span class="line accent-gradient">Watching in Real Time.</span>
+      </h1>
+
+      <p class="hero__lead">
+        Sentinel fuses IoT telemetry, digital twins, and predictive AI into a single decision
+        layer — catching failures weeks before they happen, not minutes after.
+      </p>
+
+      <div class="hero__actions">
+        <a routerLink="/demo" class="btn btn--primary">Request Demo</a>
+        <a [href]="loginUrl" class="btn btn--ghost">Sign In</a>
+      </div>
+
+      <div class="hero__stats">
+        <div>
+          <strong class="mono"><span [appCountUp]="2400" [countUpFormat]="sensorCountFormat" [countUpDuration]="1400">0</span></strong>
+          <span class="tag-label">Connected Sensors</span>
+        </div>
+        <div>
+          <strong class="mono"><span [appCountUp]="99.9" [countUpFormat]="precisionFormat" [countUpDuration]="1400">0</span></strong>
+          <span class="tag-label">Prediction Accuracy</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero__visual">
+      <app-industrial-scene mode="hero" class="hero__scene"></app-industrial-scene>
+
+      <div class="hero__chip hero__chip--health">
+        <span class="tag-label">Machine Health</span>
+        <strong class="mono">94%</strong>
+      </div>
+
+      <div class="hero__chip hero__chip--temp">
+        <span class="tag-label">Temperature</span>
+        <strong class="mono">68&deg;C</strong>
+      </div>
+
+      <div class="hero__chip hero__chip--vibration">
+        <span class="tag-label">Vibration</span>
+        <strong class="mono">0.4 mm/s</strong>
+      </div>
+
+      <div class="hero__chip hero__chip--anomaly">
+        <span class="status-dot"></span>
+        <span class="tag-label">0 Anomalies Detected</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero__scroll-cue" aria-hidden="true">
+    <span class="tag-label">Scroll</span>
+    <span class="hero__scroll-line"></span>
+  </div>
+</section>

@@ -1,0 +1,19 @@
+/* You can add global styles to this file, and also import other style files */
+@import '@fontsource-variable/inter';
+@import '@fontsource/jetbrains-mono/400.css';
+@import '@fontsource/jetbrains-mono/500.css';
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+::selection {
+  background: rgba(34, 211, 238, 0.3);
+  color: #f2f5f8;
+}

@@ -1,0 +1,48 @@
+<div class="page">
+
+  <app-marketing-nav></app-marketing-nav>
+
+  <!-- HERO -->
+  <section class="page-hero" appScrollReveal>
+    <span class="badge">Fonctionnalités</span>
+    <h1>Tout ce qu'il faut pour une maintenance <span class="accent-gradient">prédictive</span> de pointe</h1>
+    <p>
+      De la capture des données capteurs à la décision opérationnelle, Sentinel couvre
+      toute la chaîne de la maintenance industrielle intelligente.
+    </p>
+  </section>
+
+  <!-- FEATURE GRID -->
+  <section class="features-section">
+    <div class="features-grid">
+      <article class="feature-card" *ngFor="let f of features; let i = index" [appScrollReveal]="(i % 3) * 100">
+        <div class="feature-card__icon" [ngSwitch]="f.icon">
+          <svg *ngSwitchCase="'pulse'" width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M3 12h4l2-7 4 14 2-7h6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <svg *ngSwitchCase="'brain'" width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M9 4a3 3 0 00-3 3v1a3 3 0 000 6v1a3 3 0 003 3M15 4a3 3 0 013 3v1a3 3 0 010 6v1a3 3 0 01-3 3M9 4v16M15 4v16" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+          <svg *ngSwitchCase="'shield'" width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M12 3l7 3v6c0 4.5-3 8-7 9-4-1-7-4.5-7-9V6l7-3z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M9 12l2 2 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <svg *ngSwitchCase="'bell'" width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M18 8a6 6 0 10-12 0c0 7-3 9-3 9h18s-3-2-3-9" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M13.7 21a2 2 0 01-3.4 0" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+          <svg *ngSwitchCase="'plug'" width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M9 3v6M15 3v6M6 9h12l-1 4a5 5 0 01-10 0L6 9z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M12 17v4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+          <svg *ngSwitchCase="'lock'" width="22" height="22" viewBox="0 0 24 24" fill="none"><rect x="5" y="10" width="14" height="10" rx="2" stroke="currentColor" stroke-width="1.6"/><path d="M8 10V7a4 4 0 018 0v3" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+        </div>
+
+        <h3>{{ f.title }}</h3>
+        <p>{{ f.description }}</p>
+      </article>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta" appScrollReveal>
+    <h2>Prêt à découvrir Sentinel en action ?</h2>
+
+    <div class="cta__actions">
+      <a routerLink="/demo" class="btn btn--dark">Demander une démo</a>
+      <a routerLink="/contact" class="btn btn--outline-dark">Contacter un expert</a>
+    </div>
+
+    <p class="cta__note">Réponse sous 24h · Accompagnement personnalisé par nos équipes</p>
+  </section>
+
+  <app-marketing-footer></app-marketing-footer>
+
+</div>

@@ -1,0 +1,122 @@
+@import '../../marketing-shared';
+
+.pipeline {
+  padding: 6rem 1.5rem;
+  max-width: 1240px;
+  margin: 0 auto;
+}
+
+.pipeline__track {
+  position: relative;
+  padding-top: 0;
+}
+
+.pipeline__svg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 60px;
+  width: 100%;
+  display: none;
+}
+
+.pipeline__path-bg {
+  fill: none;
+  stroke: var(--border-strong);
+  stroke-width: 1.5;
+}
+
+.pipeline__path {
+  fill: none;
+  stroke: var(--cyan);
+  stroke-width: 2;
+  stroke-linecap: round;
+}
+
+.pipeline__particle {
+  fill: var(--cyan);
+  filter: drop-shadow(0 0 8px rgba(34, 211, 238, 0.9));
+}
+
+.pipeline-nodes {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 1.5rem;
+}
+
+.pipeline-node {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 0.85rem;
+
+  h3 {
+    font-size: 0.98rem;
+    font-weight: 700;
+    margin: 0;
+  }
+
+  p {
+    font-size: 0.82rem;
+    line-height: 1.55;
+    color: var(--text-muted);
+    margin: 0;
+  }
+}
+
+.pipeline-node__icon {
+  --glow: 0;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(180deg, var(--surface-strong), var(--surface));
+  border: 1px solid var(--border-strong);
+  color: color-mix(in srgb, var(--cyan) calc(var(--glow) * 100%), var(--text-muted));
+  box-shadow: 0 0 calc(var(--glow) * 28px) rgba(34, 211, 238, calc(var(--glow) * 0.65));
+  border-color: color-mix(in srgb, var(--cyan) calc(var(--glow) * 100%), var(--border-strong));
+  transition: color 0.2s ease;
+}
+
+@media (min-width: 860px) {
+  .pipeline__svg {
+    display: block;
+  }
+}
+
+@media (max-width: 859px) {
+  .pipeline-nodes {
+    grid-template-columns: 1fr;
+    gap: 2.25rem;
+    max-width: 24rem;
+    margin: 0 auto;
+    position: relative;
+
+    &::before {
+      content: '';
+      position: absolute;
+      left: 28px;
+      top: 28px;
+      bottom: 28px;
+      width: 1px;
+      background: linear-gradient(180deg, var(--blue), var(--cyan), var(--border));
+      opacity: 0.35;
+    }
+  }
+
+  .pipeline-node {
+    flex-direction: row;
+    text-align: left;
+    gap: 1rem;
+  }
+
+  .pipeline-node__icon {
+    --glow: 1;
+    flex-shrink: 0;
+  }
+}

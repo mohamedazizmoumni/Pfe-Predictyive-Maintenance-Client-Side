@@ -1,0 +1,92 @@
+@import '../marketing-shared';
+
+.page {
+  overflow-x: hidden;
+}
+
+.demo-section {
+  padding: 4rem 1.5rem 1rem;
+}
+
+.demo-grid {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  gap: 3rem;
+  align-items: start;
+}
+
+.demo-info {
+  h2 {
+    font-size: 1.5rem;
+    font-weight: 800;
+    margin: 0 0 1.5rem;
+  }
+}
+
+.highlight-list {
+  list-style: none;
+  margin: 0 0 2.5rem;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+
+  li {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    color: var(--text-secondary);
+    font-size: 0.92rem;
+    line-height: 1.5;
+  }
+
+  svg {
+    color: var(--orange);
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+}
+
+.demo-quote {
+  border-left: 3px solid var(--orange);
+  padding-left: 1.25rem;
+
+  p {
+    margin: 0 0 0.6rem;
+    font-style: italic;
+    color: var(--text-secondary);
+    line-height: 1.6;
+  }
+
+  span {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+  }
+}
+
+.demo-form-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 2.25rem;
+
+  h2 {
+    font-size: 1.3rem;
+    font-weight: 800;
+    margin: 0 0 1.5rem;
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+}
+
+@media (max-width: 900px) {
+  .demo-grid {
+    grid-template-columns: 1fr;
+  }
+}
