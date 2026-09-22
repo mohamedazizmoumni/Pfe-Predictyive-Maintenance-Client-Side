@@ -21,10 +21,10 @@ export class MarketingNavComponent implements OnDestroy {
   readonly loginUrl = `${environment.appUrl}/auth/login`;
 
   readonly links: NavLink[] = [
-    { label: 'Platform', fragment: 'platform' },
-    { label: 'AI Engine', fragment: 'ai-engine' },
-    { label: 'Digital Twin', fragment: 'digital-twin' },
-    { label: 'Analytics', fragment: 'analytics' },
+    { label: 'Plateforme', fragment: 'platform' },
+    { label: 'Moteur IA', fragment: 'ai-engine' },
+    { label: 'Jumeau numérique', fragment: 'digital-twin' },
+    { label: 'Analytique', fragment: 'analytics' },
     { label: 'Solutions', fragment: 'solutions' },
   ];
 

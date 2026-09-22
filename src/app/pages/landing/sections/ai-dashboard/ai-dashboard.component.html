@@ -1,21 +1,21 @@
 <section id="ai-engine" class="dashboard-section">
   <div class="section-head" appScrollReveal>
-    <span class="eyebrow">AI Engine</span>
-    <h2>An AI that shows its work.</h2>
-    <p>Not a black box — live model output, streamed straight from the inference pipeline.</p>
+    <span class="eyebrow">Moteur IA</span>
+    <h2>Une IA qui explique ses décisions.</h2>
+    <p>Pas de boîte noire : les résultats du modèle sont transmis en direct depuis le pipeline d'inférence.</p>
   </div>
 
   <div class="dashboard glass-panel glow-border" appScrollReveal="100">
     <div class="dashboard__bar">
-      <span class="dashboard__live"><span class="status-dot"></span> LIVE</span>
-      <span class="tag-label">Line 4 · Compressor Unit B12</span>
-      <span class="tag-label dashboard__updated">Updated {{ secondsAgo() }}s ago · {{ rpm() }} RPM</span>
+      <span class="dashboard__live"><span class="status-dot"></span> EN DIRECT</span>
+      <span class="tag-label">Ligne 4 · Compresseur B12</span>
+      <span class="tag-label dashboard__updated">Mis à jour il y a {{ secondsAgo() }} s · {{ rpm() }} tr/min</span>
     </div>
 
     <div class="dashboard__grid">
       <div class="tile tile--chart">
         <div class="tile__head">
-          <span class="tag-label">Vibration Trend · 7 Days</span>
+          <span class="tag-label">Tendance des vibrations · 7 jours</span>
         </div>
         <svg class="chart" viewBox="0 0 400 130" preserveAspectRatio="none" aria-hidden="true">
           <defs>
@@ -31,7 +31,7 @@
 
       <div class="tile tile--timeline">
         <div class="tile__head">
-          <span class="tag-label">Anomaly Timeline</span>
+          <span class="tag-label">Chronologie des anomalies</span>
         </div>
         <div class="timeline">
           <span class="timeline__axis"></span>
@@ -55,7 +55,7 @@
 
       <div class="tile tile--score">
         <div class="tile__head">
-          <span class="tag-label">Health Score</span>
+          <span class="tag-label">Score de santé</span>
         </div>
         <strong class="tile__score mono">
           <span [appCountUp]="91.4" [countUpFormat]="healthFormat" [countUpDuration]="1200">0</span>
@@ -63,7 +63,7 @@
 
         <div class="confidence">
           <div class="confidence__head">
-            <span class="tag-label">Prediction Confidence</span>
+            <span class="tag-label">Confiance de la prédiction</span>
             <span class="mono">87%</span>
           </div>
           <div class="confidence__track">
@@ -74,14 +74,14 @@
 
       <div class="tile tile--recommendation">
         <div class="tile__head">
-          <span class="tag-label">Recommended Action</span>
+          <span class="tag-label">Action recommandée</span>
         </div>
         <p class="recommendation">
-          Schedule a bearing housing inspection on <strong>Compressor Unit B12</strong> within
-          the next 2 weeks. Acting now avoids an estimated <strong>$42,000</strong> in unplanned
-          downtime.
+          Planifiez une inspection du logement de palier du <strong>compresseur B12</strong> dans
+          les 2 prochaines semaines. Agir maintenant évite environ <strong>42 000 $</strong>
+          d'arrêt imprévu.
         </p>
-        <span class="badge badge--warning">Priority: Medium</span>
+        <span class="badge badge--warning">Priorité : moyenne</span>
       </div>
     </div>
   </div>

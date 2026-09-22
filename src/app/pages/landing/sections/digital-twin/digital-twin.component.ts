@@ -21,20 +21,20 @@ export class DigitalTwinComponent {
   readonly hotspots: Hotspot[] = [
     {
       position: 'top',
-      label: 'AI Prediction Core',
-      detail: 'Continuously scoring live telemetry against the trained failure model.',
+      label: 'Noyau de prédiction IA',
+      detail: 'Compare en continu la télémétrie en direct au modèle de panne entraîné.',
       status: 'nominal',
     },
     {
       position: 'left',
-      label: 'Rotor Assembly',
-      detail: 'Vibration signature within nominal operating band.',
+      label: 'Ensemble rotor',
+      detail: 'Signature vibratoire dans la plage de fonctionnement nominale.',
       status: 'nominal',
     },
     {
       position: 'bottom-right',
-      label: 'Bearing Housing',
-      detail: 'Thermal drift detected — predicted failure in 18 days.',
+      label: 'Logement de palier',
+      detail: 'Dérive thermique détectée : panne prédite dans 18 jours.',
       status: 'warning',
     },
   ];

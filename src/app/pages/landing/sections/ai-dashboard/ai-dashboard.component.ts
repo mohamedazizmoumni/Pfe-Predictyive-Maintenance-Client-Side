@@ -30,8 +30,8 @@ export class AiDashboardComponent implements OnDestroy {
   readonly healthFormat = (v: number) => v.toFixed(1);
 
   readonly anomalies: AnomalyMarker[] = [
-    { offset: 34, label: 'Minor spike', detail: 'Vibration +0.3mm/s for 40s, self-resolved.' },
-    { offset: 78, label: 'Thermal drift', detail: 'Bearing housing +6°C above baseline, still tracking.' },
+    { offset: 34, label: 'Pic mineur', detail: 'Vibration +0,3 mm/s pendant 40 s, résolu automatiquement.' },
+    { offset: 78, label: 'Dérive thermique', detail: 'Logement de palier à +6 °C au-dessus de la référence, suivi en cours.' },
   ];
 
   private sub?: Subscription;

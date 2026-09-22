@@ -22,9 +22,9 @@ interface ImpactStat {
 })
 export class ImpactMetricsComponent implements OnDestroy {
   readonly stats: ImpactStat[] = [
-    { value: 70, format: (v) => `↓${Math.round(v)}%`, label: 'Unexpected Failures' },
-    { value: 35, format: (v) => `↑${Math.round(v)}%`, label: 'Equipment Availability' },
-    { value: 95, format: (v) => `${Math.round(v)}%`, label: 'Prediction Accuracy' },
+    { value: 70, format: (v) => `↓${Math.round(v)} %`, label: 'Pannes imprévues' },
+    { value: 35, format: (v) => `↑${Math.round(v)} %`, label: 'Disponibilité des équipements' },
+    { value: 95, format: (v) => `${Math.round(v)} %`, label: 'Précision des prédictions' },
   ];
 
   readonly visible = signal(false);

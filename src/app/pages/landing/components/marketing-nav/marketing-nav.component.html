@@ -20,15 +20,14 @@
     </nav>
 
     <div class="nav__actions">
-      <a [href]="loginUrl" class="nav__signin">Sign In</a>
-      <a routerLink="/demo" class="btn btn--primary btn--sm">Request Demo</a>
+      <a routerLink="/demo" class="btn btn--primary btn--sm">Demander une démo</a>
 
       <button
         type="button"
         class="nav__burger"
         (click)="toggleMobileMenu()"
         [attr.aria-expanded]="mobileMenuOpen"
-        aria-label="Toggle menu">
+        aria-label="Ouvrir le menu">
         <span></span>
         <span></span>
         <span></span>
@@ -39,7 +38,7 @@
   <nav class="nav__mobile glass-panel" *ngIf="mobileMenuOpen">
     <a *ngFor="let link of links" routerLink="/" [fragment]="link.fragment" (click)="closeMobileMenu()">{{ link.label }}</a>
     <a routerLink="/contact" routerLinkActive="active" (click)="closeMobileMenu()">Contact</a>
-    <a [href]="loginUrl" (click)="closeMobileMenu()">Sign In</a>
-    <a routerLink="/demo" class="btn btn--primary btn--block" (click)="closeMobileMenu()">Request Demo</a>
+    <a [href]="loginUrl" (click)="closeMobileMenu()">Se connecter</a>
+    <a routerLink="/demo" class="btn btn--primary btn--block" (click)="closeMobileMenu()">Demander une démo</a>
   </nav>
 </header>
