@@ -58,8 +58,8 @@ export class DemoComponent {
     this.submitError = false;
 
     const { fullName, workEmail, company, phone, teamSize, message } = this.form.value;
-    const fleetNote = teamSize ? `Fleet/team size: ${teamSize}` : null;
-    const combinedMessage = [message, fleetNote].filter(Boolean).join('\n\n') || 'Requested a product demo.';
+    const fleetNote = teamSize ? `Taille du parc : ${teamSize}` : null;
+    const combinedMessage = [message, fleetNote].filter(Boolean).join('\n\n') || 'Demande de démonstration du produit.';
 
     this.inquiryService
       .submitDemoRequest({
@@ -67,7 +67,7 @@ export class DemoComponent {
         email: workEmail,
         company,
         phone,
-        subject: 'Demo Request',
+        subject: 'Demande de démonstration',
         message: combinedMessage,
       })
       .pipe(

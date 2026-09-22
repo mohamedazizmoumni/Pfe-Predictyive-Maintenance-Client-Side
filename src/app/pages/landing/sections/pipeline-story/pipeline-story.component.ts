@@ -26,11 +26,11 @@ interface PipelineNode {
 })
 export class PipelineStoryComponent implements OnDestroy {
   readonly nodes: PipelineNode[] = [
-    { icon: 'machine', label: 'Machine', description: 'Rotating assets stream raw operating signal continuously.' },
-    { icon: 'sensor', label: 'Sensors', description: 'Vibration, thermal and acoustic capture at the edge.' },
-    { icon: 'brain', label: 'AI Engine', description: 'Deep models score deviation against millions of cycles.' },
-    { icon: 'target', label: 'Prediction', description: 'Failure mode and time-to-failure surfaced with confidence.' },
-    { icon: 'wrench', label: 'Maintenance Action', description: 'Work orders dispatched before downtime happens.' },
+    { icon: 'machine', label: 'Machine', description: 'Les équipements rotatifs transmettent en continu leurs signaux de fonctionnement.' },
+    { icon: 'sensor', label: 'Capteurs', description: 'Les données vibratoires, thermiques et acoustiques sont captées au plus près.' },
+    { icon: 'brain', label: 'Moteur IA', description: 'Des modèles avancés évaluent les écarts sur des millions de cycles.' },
+    { icon: 'target', label: 'Prédiction', description: 'Le mode de panne et le délai estimé sont présentés avec leur niveau de confiance.' },
+    { icon: 'wrench', label: 'Action de maintenance', description: "Les ordres de travail sont envoyés avant l'arrêt de production." },
   ];
 
   private gsapContext?: { revert: () => void };
